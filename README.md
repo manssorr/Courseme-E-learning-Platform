@@ -3,7 +3,7 @@ Courseme is an innovative e-learning platform designed to provide an accessible,
 
 ## Video Demo
 - Watch the Courseme platform in action [here](https://youtu.be/rluwQwXt0Tw).
-> And you check screenshots [here](https://github.com/manssorr/Courseme-E-learning-Platform/edit/main/README.md#screenshots).
+> And you check screenshots [here](https://github.com/manssorr/Courseme-E-learning-Platform/blob/main/README.md#screenshots).
 
 ## Project Documentation
 - [Paper](./Courseme-slideshow.pdf): A detailed exploration of the concepts and technologies behind Courseme. 
