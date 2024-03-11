@@ -3,13 +3,12 @@
 Courseme is an innovative e-learning platform designed to provide an accessible, engaging, and comprehensive educational experience to users of all ages. With a wide array of courses spanning various subjects, Courseme leverages the latest technologies to deliver personalized learning experiences, including AI-recommended books, interactive quizzes, and learning paths tailored to each student's needs.
 
 ## Video Demo
-Watch the Courseme platform in action here.
+Watch the Courseme platform in action [here](https://youtu.be/rluwQwXt0Tw).
 
 ## Project Documentation
 
-- Paper: A detailed exploration of the concepts and technologies behind Courseme.
-- Slideshow: A visual presentation summarizing the project's scope, features, and tech stack.
-(Note: Links to the paper and slideshow will be provided here once available.)
+- [Paper](./Courseme-slideshow.pdf): A detailed exploration of the concepts and technologies behind Courseme. 
+- [Slideshow](./E-learning%20Platform%20paper.pdf): A visual presentation summarizing the project's scope, features, and tech stack.
 
 
 ## Features
