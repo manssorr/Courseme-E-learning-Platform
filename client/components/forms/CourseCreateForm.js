@@ -1,0 +1,168 @@
+import { Select, Button, Avatar, Badge } from "antd";
+import { cats } from "../../utils/dummyData";
+
+const { Option } = Select;
+
+const CourseCreateForm = ({
+  handleSubmit,
+  handleImage,
+  handleChange,
+  handleCatChange,
+  values,
+  setValues,
+  preview,
+  uploadButtonText,
+  handleImageRemove = (f) => f,
+  editPage = false
+}) => {
+  const children = [];
+  for (let i = 9.99; i <= 100.99; i++) {
+    children.push(<Option key={i.toFixed(2)}>${i.toFixed(2)}</Option>);
+  }
+  return (
+    <>
+      {values && (
+        <form onSubmit={handleSubmit}>
+          {/* Name Field */}
+          <div className="form-group">
+            <input
+              type="text"
+              name="name"
+              className="form-control"
+              placeholder="Name"
+              value={values.name}
+              onChange={handleChange}
+            />
+          </div>
+
+          {/*Description Field */}
+          <div className="form-group">
+            <textarea
+              name="description"
+              cols="7"
+              rows="7"
+              value={values.description}
+              className="form-control"
+              onChange={handleChange}
+            ></textarea>
+          </div>
+
+          {/* Reference Field */}
+          <div className="form-group">
+            <input
+              type="text"
+              name="reference"
+              className="form-control"
+              placeholder="Reference name"
+              value={values.reference}
+              onChange={handleChange}
+            />
+          </div>
+
+          {/* Price */}
+          <div className="form-row">
+            <div className="col">
+              <div className="form-group">
+                <Select
+                  style={{ width: "100%" }}
+                  size="large"
+                  value={values.paid}
+                  onChange={(v) => setValues({ ...values, paid: v, price: 0 })}
+                >
+                  <Option value={true}>Paid</Option>
+                  <Option value={false}>Free</Option>
+                </Select>
+              </div>
+            </div>
+
+            {values.paid && (
+              <div className="form-group">
+                <Select
+                  defaultValue="$9.99"
+                  style={{ widht: "100%" }}
+                  onChange={(v) => setValues({ ...values, price: v })}
+                  tokenSeparators={[,]}
+                  size="large"
+                >
+                  {children}
+                </Select>
+              </div>
+            )}
+          </div>
+
+          {/* Category */}
+          <div className="form-group">
+            <Select
+              showSearch
+              allowClear
+              name="category"
+              placeholder="Category"
+              className="form-control"
+              optionFilterProp="children"
+              onChange={handleCatChange}
+              filterOption={(input, option) => option.children.includes(input)}
+              filterSort={(optionA, optionB) =>
+                optionA.children
+                  .toLowerCase()
+                  .localeCompare(optionB.children.toLowerCase())
+              }
+              value={values.category}
+            >
+              {cats?.map((cat, index) => (
+                <Option key={index} value={cat}>
+                  {cat}
+                </Option>
+              ))}
+            </Select>
+          </div>
+
+          {/* Image */}
+          <div className="form-row">
+            <div className="col">
+              <div className="form-group">
+                <label className="btn btn-outline-secondary btn-block text-left">
+                  {uploadButtonText}
+                  <input
+                    type="file"
+                    name="image"
+                    onChange={handleImage}
+                    accept="image/*"
+                    hidden
+                  />
+                </label>
+              </div>
+            </div>
+
+            {preview && (
+              <Badge count="X" onClick={handleImageRemove} className="pointer">
+                <Avatar width={200} src={preview} />
+              </Badge>
+            )}
+
+            {editPage && values.image && (
+              <Avatar width={200} src={values.image.Location} />
+            )}
+          </div>
+
+          <div className="row">
+            <div className="col">
+              <Button
+                onClick={handleSubmit}
+                disabled={values.loading || values.uploading}
+                className="btn btn-primary"
+                loading={values.loading}
+                type="primary"
+                size="large"
+                shape="round"
+              >
+                {values.loading ? "Saving..." : "Save & Continue"}
+              </Button>
+            </div>
+          </div>
+        </form>
+      )}
+    </>
+  );
+};
+
+export default CourseCreateForm;
